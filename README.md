@@ -8,24 +8,30 @@ This repository was created with the intention diving into a rich collection of 
 # Table Of Contents
 
 - [What is a database?](#what-is-a-database)
-- [Why is a database important? ](#why-is-a-database-important)
-- [What are the types of databases?](#what-are-the-types-of-databases)
-- [What is a database model?](#what-is-a-database-model)
-- [How did databases evolve?](#how-did-databases-evolve)
-- [What are modern databases?](#what-are-modern-databases)
-- [What is a datastore?](#what-is-a-data-store)
-- [What are databases used for?](#what-are-databases-used-for)
-- [How can AWS Cloud Databases help?](#how-can-aws-cloud-databases-help)
+  - [Why is a database important? ](#why-is-a-database-important)
+  - [What are the types of databases?](#what-are-the-types-of-databases)
+  - [What is a database model?](#what-is-a-database-model)
+  - [How did databases evolve?](#how-did-databases-evolve)
+  - [What are modern databases?](#what-are-modern-databases)
+  - [What is a datastore?](#what-is-a-data-store)
+  - [What are databases used for?](#what-are-databases-used-for)
+  - [How can AWS Cloud Databases help?](#how-can-aws-cloud-databases-help)
+- [What is JSON?](#what-is-json)
+  - [What is a JSON document database?](#what-is-a-json-document-database)
+  - [Relational Database vs JSON Document Database Terminology](#relational-database-vs-json-document-database-terminology)
+  - [Use cases for a JSON document database](#use-cases-for-a-json-document-database)
 
 Sources:
 
 - [What is a database?](https://aws.amazon.com/what-is/database/)
+- [What is JSON?](https://aws.amazon.com/documentdb/what-is-json/)
+- [What is NoSQL?](https://aws.amazon.com/nosql/)
 
 # What is a database?
 
 A database is an electronically stored, systematic collection of data. It can contain any type of data, including words, numbers, images, videos, and files. You can use software called a database management system (DBMS) to store, retrieve, and edit data. In computer systems, the word _database_ can also refer to any DBMS, to the database system, or to an application associated with the database.
 
-# Why is a database important?
+### Why is a database important?
 
 A high-performing database is crucial to any organization. Databases support the internal operations of companies and store interactions with customers and suppliers. They also hold administrative information and more specialized data, such as engineering or economic models. Examples include digital library systems, travel reservation systems, and inventory systems. The following are some reasons why databases are essential.
 
@@ -45,7 +51,7 @@ Databases support privacy and compliance requirements associated with any data. 
 
 Modern software systems use databases to analyze data. These systems can identify trends and patterns or make predictions. Data analytics help an organization make business decisions with confidence.
 
-# What are the types of databases?
+### What are the types of databases?
 
 You can classify databases according to their use case, data type, and data storage method. Here are three examples of ways to classify databases:
 
@@ -53,7 +59,7 @@ You can classify databases according to their use case, data type, and data stor
 - By their application area, such as accounting, film, or manufacturing
 - By their technical aspects, such as the database structure or interface type
 
-# What is a database model?
+### What is a database model?
 
 A database model shows the logical structure of a database. It defines the relationships and rules that determine how data can be stored, organized, and manipulated. Each database application is built on a specific data model. Individual database models are designed based on the rules and concepts of the broader data model that the underlying application adopts.
 
@@ -61,7 +67,7 @@ A database model shows the logical structure of a database. It defines the relat
     <img src="./assets/database-model.png" width="80%" alt="repo-logo"/>
 </div>
 
-# How did databases evolve?
+### How did databases evolve?
 
 The earliest databases were magnetic tapes with data records stored sequentially. Databases continued to evolve with advances in technology. They have now become complex, high-performing systems with their own dedicated field of study. Let’s look at how data models evolved.
 
@@ -96,7 +102,7 @@ In a relational database model, each category has a table, with category attribu
 | 1           | Wardrobe       |
 | 2           | Wardrobe       |
 
-### Object-oriented database
+#### Object-oriented database
 
 Object-oriented databases evolved in the 1990s in response to the emergence of object-oriented programming. Programmers and designers began to treat the data in their databases as objects. For instance, you can map a chair’s attributes, such as color and size, to a chair data object. This object is a virtual representation of the real-world chair in the object-oriented database.
 
@@ -104,7 +110,7 @@ Object-oriented databases evolved in the 1990s in response to the emergence of o
 
 SQL is a query language used to retrieve, access, and edit data in relational databases. NoSQL represents the opposite, a database mechanism that does not use tabular relationships in data modeling. [NoSQL databases](https://aws.amazon.com/nosql/) were created at the start of the twenty-first century when cluster computing and distributed database architectures emerged. Distributed architectures store one large database over multiple underlying storage devices. This arrangement is called horizontal scaling. The software mechanisms used in NoSQL are high speed, no requirement for fixed table schemas, the ability to store duplicated or grouped data, and the ability to scale horizontally.
 
-# What are modern databases?
+### What are modern databases?
 
 The databases used today have evolved to scale both vertically and horizontally. They can store vast data in the cloud and provide advanced software interfaces for machine learning and other data analytics.
 
@@ -120,13 +126,13 @@ A cloud database typically runs on a cloud-computing platform. There are two sta
 
 While most databases are stored on external storage devices, an in-memory database resides in a computer’s internal memory. However, it is typically backed up by computer data storage as well. In-memory databases are faster than disk databases. They are often used where response time is critical, such as in telecommunications network equipment.
 
-# What is a datastore?
+### What is a datastore?
 
 _Datastore_ is a broad term for the very large data repository of any enterprise. Organizations produce all types of data, including files, documents, videos, customer data, application data, and system data. They use a datastore to process and store all their data, using it for analytics, applications, and data-driven decision making.
 
 [Amazon Redshift](https://aws.amazon.com/redshift/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc&-new-cards.sort-order=desc) is a fully managed, petabyte-scale data warehouse service in the cloud. You can start with just a few hundred gigabytes of data and scale to a petabyte or more.
 
-# What are databases used for?
+### What are databases used for?
 
 All industries use databases for a variety of use cases. The following are some examples:
 
@@ -142,7 +148,7 @@ NoSQL databases store and manage documents, such as articles and contracts. They
 
 Many gaming and entertainment companies use databases extensively to provide rich media experiences, such as simultaneous login access for millions of users.
 
-# How can AWS Cloud Databases help?
+### How can AWS Cloud Databases help?
 
 [AWS Cloud Databases](https://aws.amazon.com/products/databases/) provides a broad selection of purpose-built databases for any enterprise. AWS databases support all database management tasks, such as server provisioning, patching, configuration, and backups. As a result, you can focus on application development while AWS continuously monitors your databases and automates scaling. The following are some examples of AWS database services:
 
@@ -151,3 +157,78 @@ Many gaming and entertainment companies use databases extensively to provide ric
 - [Amazon Neptune](https://aws.amazon.com/neptune/) is a graph-oriented database that can execute more than 100,000 queries per second.
 - [Amazon Redshift](https://aws.amazon.com/redshift/) is a fully managed, petabyte-scale data warehouse service in the cloud.
 - [Amazon ElastiCache](https://aws.amazon.com/elasticache/memcached/) is an in-memory NoSQL database that is fully managed, scalable, and secure. It is a popular choice for mobile apps, gaming, e-commerce, and other applications where frequently accessed data must be stored in memory.
+
+# What is JSON?
+
+JavaScript Object Notation, more commonly known by the acronym JSON, is an open data interchange format that is both human and machine-readable. Despite the name JavaScript Object Notation, JSON is independent of any programming language and is a common API output in a wide variety of applications.
+
+JSON represents data in two ways:
+
+- **Object**: a collection of name-value (or key-value) pairs. An object is defined within left ({) and right (}) braces. Each name-value pair begins with the name, followed by a colon, followed by the value. Name-value pairs are comma separated.
+
+- **Array**: an ordered collection of values. An array is defined within left ([) and right (]) brackets. Items in the array are comma separated.
+
+<div align="center">
+    <img src="./assets/json-format.png" width="80%" alt="json-format"/>
+</div>
+
+Below is a JSON example that contains an array of objects in which the objects represent different films in a streaming library. Each film is defined by two name-value pairs, one that specifies a unique value to identify that film and another that specifies a URL that points to the corresponding film’s promotional image.
+
+```JSON
+var films = [
+  {"FilmID":"catmanbegins", "Image":"https://m.media-amazon.com/images/catmanbegins.jpg"},
+  {"FilmID":"cabdriver", "Image":"https://m.media-amazon.com/images/cabdriver.jpg"},
+  {"FilmID":"pulpnonfiction", "Image":"https://m.media-amazon.com/images/pulpnonfiction.jpg"},
+  {"FilmID":"doctornormal", "Image":"https://m.media-amazon.com/images/doctornormal.jpg"},
+  {"FilmID":"backtothepresent", "Image":"https://m.media-amazon.com/images/backtothepresent.jpg"}
+];
+```
+
+### What is a JSON document database?
+
+A JSON [document database](https://aws.amazon.com/nosql/document/) is a type of nonrelational database that is designed to store and query data as JSON documents, rather than normalizing data across multiple tables, each with a unique and fixed structure, as in a relational database. JSON document databases use the same document-model format that developers use in their application code, which make it much easier for them to store and query data. The flexible, semi-structured, and hierarchical nature of JSON document databases allows them to evolve with applications’ needs. JSON document databases provide powerful and intuitive APIs for flexible and agile development.
+
+<div align="center">
+    <img src="./assets/json-database-query.png" width="80%" alt="json-database-query"/>
+</div>
+
+[Amazon DocumentDB (with MongoDB compatibility)](https://aws.amazon.com/documentdb/) is a fast, scalable, highly available, and fully managed document database service that supports MongoDB workloads, that makes it easy to store, query, and index JSON data.
+
+<div align="center">
+    <img src="./assets/product-page-diagram-document.png" width="80%" alt="product-page-diagram-document"/>
+</div>
+
+_**Amazon DocumentDB makes it easy to insert, query, index, and perform aggregations over JSON data.**_
+
+### Relational Database vs JSON Document Database Terminology
+
+The following table compares terminology used by JSON document databases with terminology used by relational databases using SQL.
+
+| Relational database (SQL) | JSON document database |
+| ------------------------- | ---------------------- |
+| Table                     | Collection             |
+| Row                       | Document               |
+| Column                    | Field                  |
+| Primary key               | ObjectID               |
+| Index                     | Index                  |
+| View                      | View                   |
+| Nested table or object    | Embedded document      |
+| Array                     | Array                  |
+
+### Use cases for a JSON document database
+
+**Content management**
+
+A JSON document database is a great choice for content management applications, such as blogs and video platforms, because each entity can be stored as a single JSON document. Should the data model need to change, only the affected documents need to be updated, with no need for schema updates and no database downtime required.
+
+**Catalogs**
+
+JSON document databases are efficient and effective for storing catalog information. For example, in an e-commerce app, different products usually have different numbers of attributes. These attributes can be described in a single JSON document for easy management and faster reading speed than would be possible with a relational database.
+
+**User profiles**
+
+JSON document databases are a good solution for online profiles in which different users provide different types of information. Using a JSON document database, you can store each user's profile efficiently by storing only the attributes that are specific to each user. JSON document databases easily manage this level of individuality and fluidity.
+
+**Real-time big data**
+
+Being able to extract operational information in real time is critical in a highly competitive business environment. By using JSON document databases, a business can store and manage operational data from any source and concurrently feed the data to the BI engine of choice for analysis, with no need to have two separate environments.
