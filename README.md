@@ -1,6 +1,6 @@
 <div align="center">
     <img src="./assets/repo-logo.png" width="80%" alt="repo-logo"/>
-    <h1> Web Security Handbook </h1>
+    <h1> Databases Handbook </h1>
 </div>
 
 This repository was created with the intention diving into a rich collection of insights, best practices, and practical code examples. From fundamental concepts to advanced techniques, this repository equips developers with the tools to build robust, optimized, and secure databases.
@@ -13,9 +13,20 @@ This repository was created with the intention diving into a rich collection of 
   - [What is a database model?](#what-is-a-database-model)
   - [How did databases evolve?](#how-did-databases-evolve)
   - [What are modern databases?](#what-are-modern-databases)
-  - [What is a datastore?](#what-is-a-data-store)
+  - [What is a datastore?](#what-is-a-datastore)
   - [What are databases used for?](#what-are-databases-used-for)
   - [How can AWS Cloud Databases help?](#how-can-aws-cloud-databases-help)
+- [What is SQL?](#what-is-sql)
+  - [Why is SQL important?](#why-is-sql-important)
+  - [What are the components of a SQL system?](#what-are-the-components-of-a-sql-system)
+  - [How does SQL work?](#how-does-sql-work)
+  - [What are SQL commands?](#what-are-sql-commands)
+  - [What are SQL standards?](#what-are-sql-standards)
+  - [What is SQL injection?](#what-is-sql-injection)
+  - [What is MySQL?](#what-is-mysql)
+  - [What is NoSQL?](#what-is-nosql)
+  - [What is a SQL server?](#what-is-a-sql-server)
+  - [How does AWS support SQL?](#how-does-aws-support-sql)
 - [What is NoSQL?](#what-is-nosql)
   - [What are the advantages of NoSQL databases](#what-are-the-advantages-of-nosql-databases)
   - [What are the use cases of NoSQL databases](#what-are-the-use-cases-of-nosql-databases)
@@ -32,8 +43,9 @@ This repository was created with the intention diving into a rich collection of 
 Sources:
 
 - [What is a database?](https://aws.amazon.com/what-is/database/)
-- [What is JSON?](https://aws.amazon.com/documentdb/what-is-json/)
+- [What is SQL (Structured Query Language)?](https://aws.amazon.com/what-is/sql/)
 - [What is NoSQL?](https://aws.amazon.com/nosql/)
+- [What is JSON?](https://aws.amazon.com/documentdb/what-is-json/)
 
 # What is a database?
 
@@ -166,80 +178,138 @@ Many gaming and entertainment companies use databases extensively to provide ric
 - [Amazon Redshift](https://aws.amazon.com/redshift/) is a fully managed, petabyte-scale data warehouse service in the cloud.
 - [Amazon ElastiCache](https://aws.amazon.com/elasticache/memcached/) is an in-memory NoSQL database that is fully managed, scalable, and secure. It is a popular choice for mobile apps, gaming, e-commerce, and other applications where frequently accessed data must be stored in memory.
 
-# What is JSON?
+# What is SQL?
 
-JavaScript Object Notation, more commonly known by the acronym JSON, is an open data interchange format that is both human and machine-readable. Despite the name JavaScript Object Notation, JSON is independent of any programming language and is a common API output in a wide variety of applications.
+Structured query language (SQL) is a programming language for storing and processing information in a relational database. A relational database stores information in tabular form, with rows and columns representing different data attributes and the various relationships between the data values. You can use SQL statements to store, update, remove, search, and retrieve information from the database. You can also use SQL to maintain and optimize database performance.
 
-JSON represents data in two ways:
+### Why is SQL important?
 
-- **Object**: a collection of name-value (or key-value) pairs. An object is defined within left ({) and right (}) braces. Each name-value pair begins with the name, followed by a colon, followed by the value. Name-value pairs are comma separated.
+Structured query language (SQL) is a popular query language that is frequently used in all types of applications. Data analysts and developers learn and use SQL because it integrates well with different programming languages. For example, they can embed SQL queries with the Java programming language to build high-performing data processing applications with major SQL database systems such as Oracle or MS SQL Server. SQL is also fairly easy to learn as it uses common English keywords in its statements
 
-- **Array**: an ordered collection of values. An array is defined within left ([) and right (]) brackets. Items in the array are comma separated.
+**History of SQL**
 
-<div align="center">
-    <img src="./assets/json-format.png" width="80%" alt="json-format"/>
-</div>
+SQL was invented in the 1970s based on the relational data model. It was initially known as the structured English query language (SEQUEL). The term was later shortened to SQL. Oracle, formerly known as Relational Software, became the first vendor to offer a commercial SQL relational database management system.
 
-Below is a JSON example that contains an array of objects in which the objects represent different films in a streaming library. Each film is defined by two name-value pairs, one that specifies a unique value to identify that film and another that specifies a URL that points to the corresponding film’s promotional image.
+### What are the components of a SQL system?
 
-```JSON
-var films = [
-  {"FilmID":"catmanbegins", "Image":"https://m.media-amazon.com/images/catmanbegins.jpg"},
-  {"FilmID":"cabdriver", "Image":"https://m.media-amazon.com/images/cabdriver.jpg"},
-  {"FilmID":"pulpnonfiction", "Image":"https://m.media-amazon.com/images/pulpnonfiction.jpg"},
-  {"FilmID":"doctornormal", "Image":"https://m.media-amazon.com/images/doctornormal.jpg"},
-  {"FilmID":"backtothepresent", "Image":"https://m.media-amazon.com/images/backtothepresent.jpg"}
-];
+Relational database management systems use structured query language (SQL) to store and manage data. The system stores multiple database tables that relate to each other. MS SQL Server, MySQL, or MS Access are examples of relational database management systems. The following are the components of such a system.
+
+**SQL table**
+
+A SQL table is the basic element of a relational database. The SQL database table consists of rows and columns. Database engineers create relationships between multiple database tables to optimize data storage space.
+
+For example, the database engineer creates a SQL table for products in a store:
+
+| Product ID | Product Name | Color ID |
+| ---------- | ------------ | -------- |
+| 0001       | Mattress     | Color 1  |
+| 0002       | Pillow       | Color 2  |
+
+Then the database engineer links the product table to the color table with the Color ID:
+
+| Color ID | Color Name |
+| -------- | ---------- |
+| Color 1  | Blue       |
+| Color 2  | Red        |
+
+**SQL statements**
+
+SQL statements, or SQL queries, are valid instructions that relational database management systems understand. Software developers build SQL statements by using different SQL language elements. SQL language elements are components such as identifiers, variables, and search conditions that form a correct SQL statement.
+
+For example, the following SQL statement uses a SQL INSERT command to store _Mattress Brand A_, priced _$499_, into a table named _Mattress_table_, with column names _brand_name_ and _cost_:
+
+```SQL
+INSERT INTO Mattress_table (brand_name, cost)
+
+VALUES(‘A’,’499’);
 ```
 
-### What is a JSON document database?
+**Stored procedures**
 
-A JSON [document database](https://aws.amazon.com/nosql/document/) is a type of nonrelational database that is designed to store and query data as JSON documents, rather than normalizing data across multiple tables, each with a unique and fixed structure, as in a relational database. JSON document databases use the same document-model format that developers use in their application code, which make it much easier for them to store and query data. The flexible, semi-structured, and hierarchical nature of JSON document databases allows them to evolve with applications’ needs. JSON document databases provide powerful and intuitive APIs for flexible and agile development.
+Stored procedures are a collection of one or more SQL statements stored in the relational database. Software developers use stored procedures to improve efficiency and performance. For example, they can create a stored procedure for updating sales tables instead of writing the same SQL statement in different applications.
 
-<div align="center">
-    <img src="./assets/json-database-query.png" width="80%" alt="json-database-query"/>
-</div>
+### How does SQL work?
 
-[Amazon DocumentDB (with MongoDB compatibility)](https://aws.amazon.com/documentdb/) is a fast, scalable, highly available, and fully managed document database service that supports MongoDB workloads, that makes it easy to store, query, and index JSON data.
+Structured query language (SQL) implementation involves a server machine that processes the database queries and returns the results. The SQL process goes through several software components, including the following.
 
-<div align="center">
-    <img src="./assets/product-page-diagram-document.png" width="80%" alt="product-page-diagram-document"/>
-</div>
+**Parser**
 
-_**Amazon DocumentDB makes it easy to insert, query, index, and perform aggregations over JSON data.**_
+The parser starts by tokenizing, or replacing, some of the words in the SQL statement with special symbols. It then checks the statement for the following:
 
-### Relational Database vs JSON Document Database Terminology
+_Correctness_
 
-The following table compares terminology used by JSON document databases with terminology used by relational databases using SQL.
+The parser verifies that the SQL statement conforms to SQL semantics, or rules, that ensure the correctness of the query statement. For example, the parser checks if the SQL command ends with a semi-colon. If the semi-colon is missing, the parser returns an error.
 
-| Relational database (SQL) | JSON document database |
-| ------------------------- | ---------------------- |
-| Table                     | Collection             |
-| Row                       | Document               |
-| Column                    | Field                  |
-| Primary key               | ObjectID               |
-| Index                     | Index                  |
-| View                      | View                   |
-| Nested table or object    | Embedded document      |
-| Array                     | Array                  |
+_Authorization_
 
-### Use cases for a JSON document database
+The parser also validates that the user running the query has the necessary authorization to manipulate the respective data. For example, only admin users might have the right to delete data.
 
-**Content management**
+**Relational engine**
 
-A JSON document database is a great choice for content management applications, such as blogs and video platforms, because each entity can be stored as a single JSON document. Should the data model need to change, only the affected documents need to be updated, with no need for schema updates and no database downtime required.
+The relational engine, or query processor, creates a plan for retrieving, writing, or updating the corresponding data in the most effective manner. For example, it checks for similar queries, reuses previous data manipulation methods, or creates a new one. It writes the plan in an intermediate-level representation of the SQL statement called byte code. Relational databases use byte code to efficiently perform database searches and modifications.
 
-**Catalogs**
+**Storage engine**
 
-JSON document databases are efficient and effective for storing catalog information. For example, in an e-commerce app, different products usually have different numbers of attributes. These attributes can be described in a single JSON document for easy management and faster reading speed than would be possible with a relational database.
+The storage engine, or database engine, is the software component that processes the byte code and runs the intended SQL statement. It reads and stores the data in the database files on physical disk storage. Upon completion, the storage engine returns the result to the requesting application.
 
-**User profiles**
+### What are SQL commands?
 
-JSON document databases are a good solution for online profiles in which different users provide different types of information. Using a JSON document database, you can store each user's profile efficiently by storing only the attributes that are specific to each user. JSON document databases easily manage this level of individuality and fluidity.
+Structured query language (SQL) commands are specific keywords or SQL statements that developers use to manipulate the data stored in a relational database. You can categorize SQL commands as follows.
 
-**Real-time big data**
+**Data definition language**
 
-Being able to extract operational information in real time is critical in a highly competitive business environment. By using JSON document databases, a business can store and manage operational data from any source and concurrently feed the data to the BI engine of choice for analysis, with no need to have two separate environments.
+Data definition language (DDL) refers to SQL commands that design the database structure. Database engineers use DDL to create and modify database objects based on the business requirements. For example, the database engineer uses the CREATE command to create database objects such as tables, views, and indexes.
+
+**Data query language**
+
+Data query language (DQL) consists of instructions for retrieving data stored in relational databases. Software applications use the SELECT command to filter and return specific results from a SQL table.
+
+**Data manipulation language**
+
+Data manipulation language (DML) statements write new information or modify existing records in a relational database. For example, an application uses the INSERT command to store a new record in the database.
+
+**Data control language**
+
+Database administrators use data control language (DCL) to manage or authorize database access for other users. For example, they can use the GRANT command to permit certain applications to manipulate one or more tables.
+
+**Transaction control language**
+
+The relational engine uses transaction control language (TCL) to automatically make database changes. For example, the database uses the ROLLBACK command to undo an erroneous transaction.
+
+### What are SQL standards?
+
+SQL standards are a set of formally defined guidelines of the structured query language (SQL). The American National Standards Institute (ANSI) and International Organization for Standardization (ISO) adopted the SQL standards in 1986. Software vendors use the ANSI SQL standards to build SQL database software for developers.
+
+### What is SQL injection?
+
+SQL injection is a cyberattack that involves tricking the database with SQL queries. Hackers use SQL injection to retrieve, modify, or corrupt data in a SQL database. For example, they might fill in a SQL query instead of a person's name in a submission form to carry out a SQL injection attack.
+
+### What is MySQL?
+
+MySQL is an open-source relational database management system offered by Oracle. Developers can download and use MySQL without paying a licensing fee. They can install MySQL on different operating systems or cloud servers. MySQL is a popular database system for web applications.
+
+**SQL vs. MySQL**
+
+Structured query language (SQL) is a standard language for database creation and manipulation. MySQL is a relational database program that uses SQL queries. While SQL commands are defined by international standards, the MySQL software undergoes continual upgrades and improvements.
+
+### What is NoSQL?
+
+NoSQL refers to non-relational databases that don't use tables to store data. Developers store information in different types of NoSQL databases, including graphs, documents, and key-values. NoSQL databases are popular for modern applications because they are horizontally scalable. Horizontal scaling means increasing the processing power by adding more computers that run NoSQL software.
+
+**SQL vs. NoSQL**
+
+Structured query language (SQL) provides a uniform data manipulation language, but NoSQL implementation is dependent on different technologies. Developers use SQL for transactional and analytical applications, whereas NoSQL is suitable for responsive, heavy-usage applications.
+
+### What is a SQL server?
+
+SQL Server is the official name of Microsoft's relational database management system that manipulates data with SQL. The MS SQL Server has several editions, and each is designed for specific workloads and requirements.
+
+### How does AWS support SQL?
+
+[Microsoft SQL Server on AWS](https://aws.amazon.com/sql/) allows developers to run Microsoft SQL workloads on AWS. The SQL database system performs better with scalable AWS computing resources. By running MS SQL on AWS, companies achieve higher service availability because AWS has the broadest global infrastructure across 24 regions. SQL Server on AWS integrates with more than 230 security, compliance, and governance services to protect your data from external threats. Some other ways AWS supports SQL include the following:
+
+- Customers use the [Amazon Database Migration Service](https://aws.amazon.com/dms/) to make moving SQL databases to AWS easier.
+- [Amazon Elastic Block Store (EBS)](https://aws.amazon.com/ebs/) provides high-performance block storage for mission-critical SQL applications.
 
 # What is NoSQL?
 
@@ -366,3 +436,78 @@ AWS has several NoSQL database services to meet all your NoSQL requirements. For
 - [Amazon Keyspaces (for Apache Cassandra)](https://aws.amazon.com/keyspaces/) is a serverless, fully managed wide-column database designed for up to 99.999% availability with multi-Region replication.
 - [Amazon Timestream](https://aws.amazon.com/timestream/) is a serverless, fully managed time-series database that makes it easier to store and analyze trillions of events per day up to 1,000 times faster than relational databases.
 - [Amazon OpenSearch Service](https://aws.amazon.com/opensearch-service/) is fully managed distributed search and analytics suite that enables real-time search, monitoring, and analysis of business and operational data.
+
+# What is JSON?
+
+JavaScript Object Notation, more commonly known by the acronym JSON, is an open data interchange format that is both human and machine-readable. Despite the name JavaScript Object Notation, JSON is independent of any programming language and is a common API output in a wide variety of applications.
+
+JSON represents data in two ways:
+
+- **Object**: a collection of name-value (or key-value) pairs. An object is defined within left ({) and right (}) braces. Each name-value pair begins with the name, followed by a colon, followed by the value. Name-value pairs are comma separated.
+
+- **Array**: an ordered collection of values. An array is defined within left ([) and right (]) brackets. Items in the array are comma separated.
+
+<div align="center">
+    <img src="./assets/json-format.png" width="80%" alt="json-format"/>
+</div>
+
+Below is a JSON example that contains an array of objects in which the objects represent different films in a streaming library. Each film is defined by two name-value pairs, one that specifies a unique value to identify that film and another that specifies a URL that points to the corresponding film’s promotional image.
+
+```JSON
+var films = [
+  {"FilmID":"catmanbegins", "Image":"https://m.media-amazon.com/images/catmanbegins.jpg"},
+  {"FilmID":"cabdriver", "Image":"https://m.media-amazon.com/images/cabdriver.jpg"},
+  {"FilmID":"pulpnonfiction", "Image":"https://m.media-amazon.com/images/pulpnonfiction.jpg"},
+  {"FilmID":"doctornormal", "Image":"https://m.media-amazon.com/images/doctornormal.jpg"},
+  {"FilmID":"backtothepresent", "Image":"https://m.media-amazon.com/images/backtothepresent.jpg"}
+];
+```
+
+### What is a JSON document database?
+
+A JSON [document database](https://aws.amazon.com/nosql/document/) is a type of nonrelational database that is designed to store and query data as JSON documents, rather than normalizing data across multiple tables, each with a unique and fixed structure, as in a relational database. JSON document databases use the same document-model format that developers use in their application code, which make it much easier for them to store and query data. The flexible, semi-structured, and hierarchical nature of JSON document databases allows them to evolve with applications’ needs. JSON document databases provide powerful and intuitive APIs for flexible and agile development.
+
+<div align="center">
+    <img src="./assets/json-database-query.png" width="80%" alt="json-database-query"/>
+</div>
+
+[Amazon DocumentDB (with MongoDB compatibility)](https://aws.amazon.com/documentdb/) is a fast, scalable, highly available, and fully managed document database service that supports MongoDB workloads, that makes it easy to store, query, and index JSON data.
+
+<div align="center">
+    <img src="./assets/product-page-diagram-document.png" width="80%" alt="product-page-diagram-document"/>
+</div>
+
+_**Amazon DocumentDB makes it easy to insert, query, index, and perform aggregations over JSON data.**_
+
+### Relational Database vs JSON Document Database Terminology
+
+The following table compares terminology used by JSON document databases with terminology used by relational databases using SQL.
+
+| Relational database (SQL) | JSON document database |
+| ------------------------- | ---------------------- |
+| Table                     | Collection             |
+| Row                       | Document               |
+| Column                    | Field                  |
+| Primary key               | ObjectID               |
+| Index                     | Index                  |
+| View                      | View                   |
+| Nested table or object    | Embedded document      |
+| Array                     | Array                  |
+
+### Use cases for a JSON document database
+
+**Content management**
+
+A JSON document database is a great choice for content management applications, such as blogs and video platforms, because each entity can be stored as a single JSON document. Should the data model need to change, only the affected documents need to be updated, with no need for schema updates and no database downtime required.
+
+**Catalogs**
+
+JSON document databases are efficient and effective for storing catalog information. For example, in an e-commerce app, different products usually have different numbers of attributes. These attributes can be described in a single JSON document for easy management and faster reading speed than would be possible with a relational database.
+
+**User profiles**
+
+JSON document databases are a good solution for online profiles in which different users provide different types of information. Using a JSON document database, you can store each user's profile efficiently by storing only the attributes that are specific to each user. JSON document databases easily manage this level of individuality and fluidity.
+
+**Real-time big data**
+
+Being able to extract operational information in real time is critical in a highly competitive business environment. By using JSON document databases, a business can store and manage operational data from any source and concurrently feed the data to the BI engine of choice for analysis, with no need to have two separate environments.
