@@ -16,6 +16,14 @@ This repository was created with the intention diving into a rich collection of 
   - [What is a datastore?](#what-is-a-data-store)
   - [What are databases used for?](#what-are-databases-used-for)
   - [How can AWS Cloud Databases help?](#how-can-aws-cloud-databases-help)
+- [What is NoSQL?](#what-is-nosql)
+  - [What are the advantages of NoSQL databases](#what-are-the-advantages-of-nosql-databases)
+  - [What are the use cases of NoSQL databases](#what-are-the-use-cases-of-nosql-databases)
+  - [How do NoSQL databases work](#how-do-nosql-databases-work)
+  - [What are the types of NoSQL databases](#what-are-the-types-of-nosql-databases)
+  - [What are the differences between NoSQL and SQL databases](#what-are-the-differences-between-nosql-and-sql-databases)
+  - [When should you choose NoSQL databases over SQL databases](#when-should-you-choose-nosql-databases-over-sql-databases)
+  - [How can AWS support your NoSQL database requirements](#how-can-aws-support-your-nosql-database-requirements)
 - [What is JSON?](#what-is-json)
   - [What is a JSON document database?](#what-is-a-json-document-database)
   - [Relational Database vs JSON Document Database Terminology](#relational-database-vs-json-document-database-terminology)
@@ -232,3 +240,129 @@ JSON document databases are a good solution for online profiles in which differe
 **Real-time big data**
 
 Being able to extract operational information in real time is critical in a highly competitive business environment. By using JSON document databases, a business can store and manage operational data from any source and concurrently feed the data to the BI engine of choice for analysis, with no need to have two separate environments.
+
+# What is NoSQL?
+
+NoSQL databases are purpose-built for specific data models and stores data in flexible schemas that scale easily for modern applications. NoSQL databases are widely recognized for their ease of development, functionality, and performance at scale. This page includes resources to help you better understand NoSQL databases and to get started.
+
+### What are the advantages of NoSQL databases
+
+Modern applications face several challenges that can be solved by [NoSQL databases](https://aws.amazon.com/dynamodb/). For instance, applications process a large data volume from disparate sources like social media, smart sensors, and third-party databases. All of this disparate data doesn't fit neatly into the relational model. Enforcing tabular structures can lead to redundancy, data duplication, and performance issues at scale.
+
+NoSQL databases are purpose-built for non-relational data models and have flexible schemas for building modern applications. They are widely recognized for their ease of development, functionality, and performance at scale. Benefits of NoSQL databases are listed below.
+
+**Flexibility**
+
+NoSQL databases generally provide flexible schemas that enable faster and more iterative development. The flexible data model makes NoSQL databases ideal for semi-structured and unstructured data.
+
+**Scalability**
+
+NoSQL databases are typically designed to scale out by using distributed clusters of hardware, as opposed to scaling up by adding expensive and robust servers. Some cloud providers handle these operations behind the scenes as a fully managed service.
+
+**High performance**
+
+NoSQL databases are optimized for specific data models and access patterns. These enable higher performance than if you were trying to accomplish similar functionality with relational databases.
+
+**Highly functional**
+
+NoSQL databases provide highly functional APIs and data types that are purpose-built for each of their respective data models.
+
+### What are the use cases of NoSQL databases
+
+You can use NoSQL databases to build a wide variety of high-performance mobile, Internet of Things (IoT), gaming, and web applications that provide great user experiences at scale. The range of NoSQL databases and their respective uses cases are wide-ranging. While it is challenging to present a representative set of use cases, below we provide a few illustrative examples as thought-starters and encourage you to learn more about each NoSQL database and their respective uses cases.
+
+**Real-time data management**
+
+You can deliver real-time recommendations, personalization, and improved user experiences with NoSQL databases. For example, [Disney+](https://www.youtube.com/watch?v=TCnmtSY2dFM) delivers its extensive digital content library to over 150 million+ subscribers using NoSQL database technology. It can scale and deliver popular features such as Continue Watching, Watchlist, and Personalized Recommendations with [Amazon DynamoDB](https://aws.amazon.com/dynamodb/).
+
+**Cloud security**
+
+You can use graph databases to quickly discover complex relationships within your data. For instance, [Wiz](https://aws.amazon.com/blogs/database/the-world-is-a-graph-how-wiz-reimagines-cloud-security-using-a-graph-in-amazon-neptune/) re-imagined cloud security as a graph using [Amazon Neptune](https://aws.amazon.com/neptune/). Wiz helps their customers improve their security posture by quickly identifying and fixing the most critical risks. They use graph model stored in Amazon Neptune to uncover the toxic combination of risk factors that represent critical risks. The Wiz risk engines traverse the graph and within seconds, weave together a series of interconnected risks factors in a security graph.
+
+**High-availability applications**
+
+Distributed NoSQL databases are excellent for building high-availability, low-latency applications for messaging, social media, file sharing, and more. For example, [Snapchat](https://aws.amazon.com/solutions/case-studies/snap-dynamodb/) has more than 290 million users sending billions of pictures and video messages daily. It uses NoSQL database systems to reduce the median latency of sending messages by 20%.
+
+# How do NoSQL databases work
+
+NoSQL databases use a variety of data models for accessing and managing data. These types of databases are optimized specifically for applications that require flexible data models, large data volume, and low latency, which are achieved by relaxing some of the data consistency restrictions of relational databases. There are differences in implementation based on the data model. However, many NoSQL databases use Javascript Object Notation (JSON), an open data interchange format that represents data as a collection of name-value pairs.
+
+### NoSQL database example
+
+Consider this example of modeling the schema for a simple book database:
+
+- In a relational database, a book record is often disassembled (or “normalized”) and stored in separate tables, and relationships are defined by primary and foreign key constraints. In this example, the **Books** table has columns for **ISBN**, **Book Title**, and **Edition Number**; the **Authors** table has columns for **AuthorID** and **Author Name**; and finally, the **Author-ISBN** table has columns for **AuthorID** and **ISBN**. The relational model is designed to enable the database to enforce referential integrity between tables in the database, normalized to reduce the redundancy, and generally optimized for storage.
+- In a NoSQL database, a book record is usually stored as a document. For each book, the item, **ISBN**, **Book Title**, **Edition Number**, **Author Name**, and **AuthorID** are stored as attributes in a single document. In this model, data is optimized for intuitive development and horizontal scalability.
+
+### SQL vs. NoSQL terminology
+
+The following table compares terminology used by select NoSQL databases with terminology used by SQL databases.
+
+| SQL                    | MongoDB           | DynamoDB               | Cassandra         | Couchbase   |
+| ---------------------- | ----------------- | ---------------------- | ----------------- | ----------- |
+| Table                  | Collection        | Table                  | Table             | Data bucket |
+| Row                    | Document          | Item                   | Row               | Document    |
+| Column                 | Field             | Attribute              | Column            | Field       |
+| Primary key            | ObjectId          | Primary key            | Primary key       | Document ID |
+| Index                  | Index             | Secondary index        | Index             | Index       |
+| View                   | View              | Global secondary index | Materialized view | View        |
+| Nested table or object | Embedded document | Map                    | Map               | Map         |
+| Array                  | Array             | List                   | List              | List        |
+
+# What are the types of NoSQL databases
+
+There are several different NoSQL database systems due to variations in the way they manage and store schema-less data. We explain some of the common types below.
+
+**Key-value databases**
+
+[Key-value databases](https://aws.amazon.com/nosql/key-value/) are highly partitionable and allow horizontal scaling at a level that other types of NoSQL databases may not achieve. A key-value database stores data as a collection of key-value pairs in which a key serves as a unique identifier. Keys and values can be anything, ranging from simple objects to complex compound objects. Use cases such as gaming, ad tech, and IoT lend themselves particularly well to the key-value store data design. [Amazon DynamoDB](https://aws.amazon.com/dynamodb/) is designed to provide consistent performance with single-digit millisecond latency for any scale of workloads.
+
+**Document databases**
+
+[Document databases](https://aws.amazon.com/documentdb/) have the same document model format that developers use in their application code. They store data as JSON objects that are flexible, semi-structured, and hierarchical in nature.. The flexible, semistructured, and hierarchical nature of documents and document databases allows them to evolve with applications’ needs. The [document database model](https://aws.amazon.com/nosql/document/) works well with catalogs, user profiles, and content management systems, where each document is unique and evolves over time. [Amazon DocumentDB (with MongoDB compatibility)](https://aws.amazon.com/documentdb/) and MongoDB are popular document databases that provide powerful and intuitive APIs for flexible and iterative development.
+
+**Graph databases**
+
+[Graph databases](https://aws.amazon.com/neptune/) are purpose-built to make it easy to build and run applications that work with highly connected datasets. They use nodes to store data entities and edges to store relationships between entities. An edge always has a start node, end node, type, and direction. It can describe parent-child relationships, actions, ownership, and the like. There is no limit to the number and kind of relationships a node can have. You can [use a graph database](https://aws.amazon.com/nosql/graph/) to build and run applications that work with highly connected datasets. Typical use cases for a graph database include social networking, recommendation engines, fraud detection, and knowledge graphs. [Amazon Neptune](https://aws.amazon.com/neptune/) is a fully-managed graph database service supporting both the Property Graph model and the Resource Description Framework (RDF) with the choice of two graph APIs (TinkerPop and RDF/SPARQL).
+
+**In-memory databases**
+
+While other non-relational databases store data on disk or SSDs, [in-memory data stores](https://aws.amazon.com/nosql/in-memory/) are designed to eliminate the need to access disks. They are ideal for applications that require microsecond response times or have large spikes in traffic. You can use them in gaming and ad-tech applications for features like leaderboards, session stores, and real-time analytics. [Amazon MemoryDB for Redis](https://aws.amazon.com/memorydb/) is a Redis-compatible, durable, in-memory database service that delivers microsecond read latency, single-digit millisecond write latency, and Multi-AZ durability. [Amazon ElastiCache](https://aws.amazon.com/elasticache/) is a fully managed, in-memory caching service compatible with both Redis and Memcached, to serve low-latency, high-throughput workloads. [Amazon DynamoDB Accelerator (DAX)](https://aws.amazon.com/dynamodb/dax/) is another example of a purpose-built data store that makes DynamoDB reads an order of magnitude faster.
+
+**Search databases**
+
+A [search-engine database](https://aws.amazon.com/nosql/search/) is a type of non-relational database that is dedicated to the search of data content, such as application output logs used by developers to troubleshoot issues. They use indexes to categorize similar characteristics among data and facilitate search capability. Search-engine databases are optimized for sorting unstructured data like images and videos. [Amazon OpenSearch Service](https://aws.amazon.com/opensearch-service/) is purpose-built for providing near-real-time visualizations and analytics of machine-generated data by indexing, aggregating, and searching semistructured logs and metrics.
+
+# What are the differences between NoSQL and SQL databases
+
+For decades, the predominant data model in application development was the relational data model that stored data in tables made of rows and columns. Structured Query Language (SQL) was used to create and edit these relational tables. SQL databases model data relationships as tables. The rows in the table represent a collection of related values of one object or entity. Each column in the table represents a data attribute, and a field (or table cell) stores the actual value of the attribute. You can use a relational database management system (RDBMS) to access the data in many different ways without reorganizing the database tables themselves.
+
+It wasn’t until the mid to late 2000s that other flexible data models began to gain significant adoption and usage. To differentiate and categorize these new classes of databases and data models, the term NoSQL was coined. NoSQL stands for not only SQL or non-SQL. Often the term NoSQL is used interchangeably with the term non-relational. Key differences between relational and non-relational databases are given in the table below.
+
+<div align="center">
+    <img src="./assets/sql-and-nosql-differences.png" width="80%" alt="sql-and-nosql-differences"/>
+</div>
+
+### When should you choose NoSQL databases over SQL databases
+
+A NoSQL database is best for handling indeterminate, unrelated, or rapidly changing data. It is intuitive to use for developers when the application dictates the database schema. You can use it for applications that:
+
+- Need flexible schemas that enable faster and more iterative development.
+- Prioritize performance over strong data consistency and maintaining relationships between data tables (referential integrity).
+- Require horizontal scaling by sharding across servers.
+- Support for semi-structured and unstructured data.
+
+You don't always have to choose between a non-relational and relational database schema. You can employ a combination of SQL and NoSQL databases in your applications. This hybrid approach is quite common and ensures each workload is mapped to the right database for optimal price performance.
+
+### How can AWS support your NoSQL database requirements
+
+AWS has several NoSQL database services to meet all your NoSQL requirements. For example:
+
+- [Amazon DynamoDB](https://aws.amazon.com/dynamodb/) is a serverless, fully managed, key-value database service that provides consistent, single-digit-millisecond performance with limitless scalability.
+- [Amazon DocumentDB (with MongoDB compatibility)](https://aws.amazon.com/documentdb/) is a fully managed, native JSON document database that makes it easy and cost effective to operate critical document workloads at virtually any scale without managing infrastructure.
+- [Amazon Neptune](https://aws.amazon.com/neptune/) is a serverless, fully managed graph database service designed for superior scalability and availability with ability to query billions of relationships in seconds.
+- [Amazon MemoryDB for Redis](https://aws.amazon.com/memorydb/) is a durable, in-memory database service that delivers microsecond read and write response times for ultra-fast performance.
+- [Amazon ElastiCache](https://aws.amazon.com/elasticache/) is a fully managed, Redis- and Memcached-compatible, in-memory data store and cache service that delivers real-time, cost-optimized performance.
+- [Amazon Keyspaces (for Apache Cassandra)](https://aws.amazon.com/keyspaces/) is a serverless, fully managed wide-column database designed for up to 99.999% availability with multi-Region replication.
+- [Amazon Timestream](https://aws.amazon.com/timestream/) is a serverless, fully managed time-series database that makes it easier to store and analyze trillions of events per day up to 1,000 times faster than relational databases.
+- [Amazon OpenSearch Service](https://aws.amazon.com/opensearch-service/) is fully managed distributed search and analytics suite that enables real-time search, monitoring, and analysis of business and operational data.
